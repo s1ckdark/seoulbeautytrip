@@ -1,0 +1,81 @@
+.map {
+    width: 100vw;
+    height: calc(100vh - 60px);
+}
+
+.markerOuter {
+    width: 100px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #c4c4c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+
+    >div {
+        width: 90px;
+        height: 40px;
+        border-radius: 12px;
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        background-color: #fff;
+
+        >span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            color: #000;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    &hightlight {
+        width: 100px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+        background-color: #f44336;
+        z-index: 99;
+
+        >div {
+            width: 90px;
+            height: 40px;
+            border-radius: 12px;
+            background-color: #fff;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+
+            >span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 90px;
+                color: #000;
+                font-size: 14px;
+                font-weight: 600;
+                text-align: center;
+                transition: all 0.3s ease-in-out;
+                color: #f44336;
+            }
+        }
+    }
+}
+
+.portfolio {
+    position: absolute;
+    width: 30vw;
+    height: 50vh;
+    top: 50%;
+    left: 50%;
+}

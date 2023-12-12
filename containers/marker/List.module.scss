@@ -1,0 +1,17 @@
+.container {
+    width: 40%;
+    min-width: 1080px;
+    max-width: 1180px;
+    margin: 0 auto;
+
+    &.map {
+        width: 40vw;
+    }
+}
+
+.buttonArea {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+}

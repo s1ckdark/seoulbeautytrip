@@ -1,0 +1,54 @@
+.session {
+    gap: 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    justify-items: center;
+
+    .userName {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            margin-right: 10px;
+
+            img {
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        font-size: 16px;
+    }
+
+    button {
+        position: relative;
+        font-size: 16px;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+
+        span {
+            transition: 0.2s;
+        }
+
+        .loadingIcon {
+            opacity: 0;
+            transition: 0.2s;
+        }
+
+        &.loading {
+            span {
+                opacity: 0;
+            }
+
+            .loadingIcon {
+                opacity: 1;
+            }
+        }
+    }
+}

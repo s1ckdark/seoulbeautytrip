@@ -15,7 +15,7 @@ interface MarkerData {
 }
 
 const List: React.FC = () => {
-    const [data, setData] = useAtom(markerDataAtom);
+    const [data, setData] = useAtom<any>(markerDataAtom);
     const pageSize = 2;
 
     const fetchFirstPage = async () => {

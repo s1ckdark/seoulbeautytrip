@@ -21,7 +21,7 @@ const MarkerCluster = ({ markers, markerInfo }: { markers: RefObject<naver.maps.
 
         const cluster = new MarkerClustering({
             minClusterSize: 2,
-            maxZoom: 14, // 조절하면 클러스터링이 되는 기준이 달라짐 (map zoom level)
+            maxZoom: 16, // 조절하면 클러스터링이 되는 기준이 달라짐 (map zoom level)
             map: map,
             markers: markerList.filter((marker) => marker),
             disableClickZoom: false,

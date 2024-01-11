@@ -1,53 +1,27 @@
-'use client';
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import Map from "@/components/Map";
-import { useAtom } from "jotai";
-import { initialCenterAtom, markerDataMapAtom } from '@/stores';
-import { fetchData } from '@/firebase/firestore/getDoc';
+import { fetchData } from '@/firebase/firestore/getDoc'
+// import { useAtom } from "jotai";
+// import { initialCenterAtom, markerDataMapAtom } from '@/stores';
 import Loading from "@/components/Loading";
 
 const NCPMap = dynamic(() => import('@/components/Map/NaverMap'), {
     ssr: false,
 });
 
-const Home = () => {
-    const [initCenter, setInitCenter] = useAtom(initialCenterAtom);
-    const [data, setData] = useAtom(markerDataMapAtom);
+async function getData() {
+    const response = await fetchData('marker');
+    const { result } = await response;
+    return result;
+}
 
-    if (!data) return <Loading />;
-    useEffect(() => {
-        // Fetching user's current location
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(({ coords }) => {
-                const { latitude, longitude } = coords;
-                setInitCenter([latitude, longitude]);
-            }, (error) => {
-                console.error("Geolocation error:", error);
-            });
-        }
+const Home = async () => {
+    const markerData = await getData();
 
-        // Fetching marker data
-        const fetchMarkerData = async () => {
-            const response = await fetchData('marker');
-            const { result, error }: { result: any, error: any } = response;
-            if (result) {
-                setData(result);
-            }
-        };
-
-        fetchMarkerData();
-    }, []);
-
+    if (!markerData) return <Loading />;
     return (
         <>
-            {/* <Map
-                mapId={"myMap"}
-                initialCenter={initCenter as [number, number]}
-                initialZoom={initialZoom}
-                onLoad={(map) => console.log("Map loaded!", map)}
-            /> */}
-            <NCPMap />
+            {markerData && <NCPMap data={markerData} />}
         </>
     );
 };
